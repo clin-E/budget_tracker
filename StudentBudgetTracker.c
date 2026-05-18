@@ -1,4 +1,6 @@
 #include <stdio.h>
+#include <math.h> 
+
 
 void budget_prediction(double net_balance, double average_daily_expenses, int days_remaining);
 
@@ -65,9 +67,10 @@ void budget_prediction(double net_balance, double average_daily_expenses, int da
             // Compare the lasting days with remaining days of the month
             if (days_lasting < days_remaining)
             {
-                // Warns the user, money may be finished before end month
-                printf("Warning: You'll run out %d days before end month!\n", (int)(days_remaining - days_lasting));
-                printf("Consider cutting back on non_essential categories.\n");
+            
+            int days_short = (int)ceil(days_remaining - days_lasting);
+            printf("Warning: You'll run out %d days before end month!\n", days_short);
+            printf("Consider cutting back on non-essential categories.\n");
             }
             // Informs user that they are safe
             else
