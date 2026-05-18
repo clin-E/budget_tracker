@@ -27,9 +27,12 @@ int main() {
     net_balance = total_income - total_expenses;
 
     // Calculate average daily expenses
-    if (days_in_month > 0) {
-        average_daily_expenses = total_expenses / days_in_month;
-    } else {
+    int days_passed = days_in_month - days_remaining;
+    if (days_passed > 0)
+    {
+        average_daily_expenses = total_expenses / days_passed;
+    } else 
+    {
         average_daily_expenses = 0;
     }
 
