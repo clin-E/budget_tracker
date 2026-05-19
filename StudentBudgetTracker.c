@@ -22,6 +22,16 @@ int main() {
 
     printf("Enter the number of days remaining in the month: ");
     scanf("%d", &days_remaining);
+    // Validate that remaining days do not exceed total days in the month
+    if (days_remaining > days_in_month) {
+        printf("\nError: Remaining days (%d) cannot be greater than total days in the month (%d).\n", days_remaining, days_in_month);
+        return 1; // Terminate the program safely with an error code
+    }
+    
+    if (days_remaining < 0 || days_in_month <= 0) {
+        printf("\nError: Days cannot be negative, and the month must have at least 1 day.\n", days_remaining, days_in_month);
+        return 1;
+    }
 
 
     // Calculate net balance
