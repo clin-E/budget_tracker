@@ -52,37 +52,39 @@ int main() {
 // A function for predicting, how long the budget will last
 void budget_prediction(double net_balance, double average_daily_expenses, int days_remaining)
 {
+    printf("\n--- Prediction ---\n");
+
+    // Catch zero or negative balance immediately
+    if (net_balance <= 0) 
+    {
+        printf("Warning: Balance is zero or negative ($%.2lf). Cut non-essential spending immediately!\n", net_balance);
+        return; 
+    }
+
     // Check if daily expenses are greater than zero, avoids division by zero
     if (average_daily_expenses > 0)
     {
         // Approximates how many days the balance can support
         double days_lasting = net_balance / average_daily_expenses;
 
-        printf("\n--- Prediction ---\n");
+        // Show the estimated no. of days the money lasts
+        printf("At your current rate, your money will last roughly %.0lf days.\n", days_lasting);
 
-        // Check if the user has a positive balance
-        if (net_balance > 0)
+        // Compare the lasting days with remaining days of the month
+        if (days_lasting < days_remaining)
         {
-            // Show the estimated no. of days the money lasts
-            printf("At your current rate, your money will last roughly %.lf days.\n", days_lasting);
-
-            // Compare the lasting days with remaining days of the month
-            if (days_lasting < days_remaining)
-            {
-                // Warns the user, money may be finished before end month
-                printf("Warning: You'll run out %d days before end month!\n", (int)ceil(days_remaining - days_lasting));
-                printf("Consider cutting back on non_essential categories.\n");
-            }
-            // Informs user that they are safe
-            else
-            {
-                printf("You are on track to finish the month safely.\n");
-            }
+            // Warns the user, money may be finished before end month
+            int days_short = (int)ceil(days_remaining - days_lasting);
+            printf("Warning: You'll run out %d days before end month!\n", days_short);
+            printf("Consider cutting back on non-essential categories.\n");
         }
         else
-        // If balance is negative
         {
-            printf("Warning: Balance is negative. Cut non-essential spending immediately.\n");
+            printf("You are on track to finish the month safely.\n");
         }
+    }
+    else 
+    {
+        printf("No daily expenses recorded yet. Your balance is secure.\n");
     }
 }
