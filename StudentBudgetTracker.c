@@ -91,6 +91,21 @@ void budget_prediction(double net_balance, double average_daily_expenses, int da
         else
         {
             printf("You are on track to finish the month safely.\n");
+            // Calculate safety margin ratio
+            double safety_margin = days_lasting / days_remaining;
+            printf("Budget Health Grade: ");
+            
+            if (safety_margin >= 1.5) {
+                printf("A+ (Excellent cushion! Consider moving some funds to savings.)\n");
+            } else if (safety_margin >= 1.2) {
+                printf("A (Great job, you are comfortably ahead.)\n");
+            } else if (safety_margin >= 1.0) {
+                printf("B (Safe, but sticking strictly to the budget is required.)\n");
+            } else if (safety_margin >= 0.75) {
+                printf("C (Tight situation. Minimize eating out this week.)\n");
+            } else {
+                printf("F (Critical deficit. Financial emergency mode.)\n");
+            }
         }
     }
     else 
