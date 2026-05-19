@@ -26,6 +26,16 @@ int main() {
     // Calculate net balance
     net_balance = total_income - total_expenses;
 
+    // Calculate days already passed in the month
+    int days_passed = days_in_month - days_remaining;
+
+    // Calculate average daily expenses based on actual elapsed days
+    if (days_passed > 0) {
+        average_daily_expenses = total_expenses / days_passed;
+    } else if (days_in_month > 0 && days_remaining == days_in_month) {
+        // Handle day 1 of the month where days_passed is 0
+        average_daily_expenses = total_expenses; 
+    } else {
     // Calculate average daily expenses
     int days_passed = days_in_month - days_remaining;
     if (days_passed > 0)
@@ -36,7 +46,7 @@ int main() {
         average_daily_expenses = 0;
     }
 
-    // Display the results
+    // Display the results//
     printf("\n--- Budget Summary ---\n");
     printf("Total Income: $%.2lf\n", total_income);
     printf("Total Expenses: $%.2lf\n", total_expenses);
