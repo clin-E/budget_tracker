@@ -36,6 +36,13 @@ int main() {
         // Handle day 1 of the month where days_passed is 0
         average_daily_expenses = total_expenses; 
     } else {
+    // Calculate average daily expenses
+    int days_passed = days_in_month - days_remaining;
+    if (days_passed > 0)
+    {
+        average_daily_expenses = total_expenses / days_passed;
+    } else 
+    {
         average_daily_expenses = 0;
     }
 
