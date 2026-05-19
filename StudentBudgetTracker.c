@@ -49,10 +49,10 @@ int main() {
 
     // Display the results
     printf("\n--- Budget Summary ---\n");
-    printf("Total Income: $%.2lf\n", total_income);
-    printf("Total Expenses: $%.2lf\n", total_expenses);
-    printf("Net Balance: $%.2lf\n", net_balance);
-    printf("Average Daily Expenses: $%.2lf\n", average_daily_expenses);
+    printf("Total Income: KES%.2lf\n", total_income);
+    printf("Total Expenses: KES%.2lf\n", total_expenses);
+    printf("Net Balance: KES%.2lf\n", net_balance);
+    printf("Average Daily Expenses: KES%.2lf\n", average_daily_expenses);
 
     // Call the function
     budget_prediction(net_balance, average_daily_expenses, days_remaining);
