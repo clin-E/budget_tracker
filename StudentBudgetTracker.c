@@ -28,8 +28,9 @@ int main() {
         return 1; // Terminate the program safely with an error code
     }
     
+    // Added %d placeholders to prevent string formatting warnings
     if (days_remaining < 0 || days_in_month <= 0) {
-        printf("\nError: Days cannot be negative, and the month must have at least 1 day.\n", days_remaining, days_in_month);
+        printf("\nError: Days remaining (%d) cannot be negative, and total days (%d) must be at least 1.\n", days_remaining, days_in_month);
         return 1;
     }
 
@@ -37,15 +38,14 @@ int main() {
     // Calculate net balance
     net_balance = total_income - total_expenses;
 
-    // Calculate average daily expenses
+    // Safeguarded Day 1 logic to avoid 0 daily expenses bug
     int days_passed = days_in_month - days_remaining;
-    if (days_passed > 0)
+    if (days_passed <= 0) 
     {
-        average_daily_expenses = total_expenses / days_passed;
-    } else 
-    {
-        average_daily_expenses = 0;
+        days_passed = 1; // Treats Day 1 as 1 full day passed to enable calculation
     }
+    average_daily_expenses = total_expenses / days_passed;
+
 
     // Display the results
     printf("\n--- Budget Summary ---\n");
